@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styel.css">
+</head>
+<body>
+<div class="admin-login-screen" id="adminLoginScreen">
+    <div class="admin-login-box">
+        <h1>🔐 Админ Панель</h1>
+        <p>Введите данные для входа в систему</p>
+        <form id="adminLoginForm">
+            <div class="admin-form-group">
+                <label for="adminUsername">Логин</label>
+                <input type="text" id="adminUsername" placeholder="Введите логин" required>
+                <span class="admin-error-message" id="usernameError">Неверный логин</span>
+            </div>
+            <div class="admin-form-group">
+                <label for="adminPassword">Пароль</label>
+                <input type="password" id="adminPassword" placeholder="Введите пароль" required>
+                <span class="admin-error-message" id="passwordAdminError">Неверный пароль</span>
+            </div>
+            <button type="submit" class="admin-btn">Войти</button>
+        </form>
+        <div class="admin-hint">
+            <strong>Подсказка:</strong><br> Логин: <strong>admin</strong><br> Пароль: <strong>admin123</strong>
+        </div>
+    </div>
+</div>
+<div class="main-content" id="mainContent">
+    <header>
+        <nav>
+            <a class="logo" onclick="showPage('home')">ProendTask</a>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')" class="nav-link active">Главная</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle">Курсы ▼</a>
+                    <div class="dropdown-menu">
+                        <a onclick="showPage('courses')">Все курсы</a>
+                        <a onclick="showPage('courses', 'Дизайн')">Дизайн</a>
+                        <a onclick="showPage('courses', 'Разработка')">Разработка</a>
+                        <a onclick="showPage('courses', 'Бизнес')">Бизнес</a>
+                        <a onclick="showPage('courses', 'Маркетинг')">Маркетинг</a>
+                    </div>
+                </li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="loginBtn">Войти</button>
+                <button class="btn btn-primary" id="registerBtn">Регистрация</button>
+            </div>
+        </nav>
+    </header>
+    <div id="home" class="page active">
+        <section class="hero">
+            <h1>Учитесь новому каждый день</h1>
+            <p>Тысячи курсов по дизайну, разработке, бизнесу и маркетингу</p>
+            <div class="search-container">
+                <input type="text" id="homeSearchInput" placeholder="Что хотите изучить?">
+                <select id="homeCategorySelect"></select>
+                <button onclick="performSearch()">Искать</button>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="categories-grid" id="categoriesGrid"></div>
+
+            <section>
+                <div class="section-title">
+                    <h2>Популярные курсы</h2>
+                </div>
+                <div class="courses-grid" id="popularCoursesGrid"></div>
+            </section>
+        </div>
+    </div>
+    <div id="courses" class="page">
+        <div class="container">
+            <div class="courses-layout">
+                <aside class="sidebar">
+                    <h3>Фильтры</h3>
+                    <div class="filter-group">
+                        <h4>Категории</h4>
+                        <div id="categoryFilters"></div>
+                    </div>
+                </aside>
+                <div class="content">
+                    <div class="tabs">
+                        <button class="tab active">Все</button>
+                        <button class="tab">Популярные</button>
+                        <button class="tab">Новые</button>
+                    </div>
+                    <div class="courses-grid" id="coursesGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h2 id="modalTitle">Войти</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ProendTask. Все права защищены.</p>
+    </footer>
+</div>
+
+<script src="./index.js"></script>
+</body>
+<html>
